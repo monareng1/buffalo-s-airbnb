@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://monareng1.github.io/WEDE-POE/sitemap.xml

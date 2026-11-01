@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rates &amp; Policies - Buffalo's BnB</title>
+  
+  <meta name="description" content="Check competitive nightly rates, estate rules, and calculate your stay cost dynamically at Buffalo's BnB in Greenpark, Boksburg.">
+  <meta name="keywords" content="Buffalo's BnB rates, Greenpark Boksburg accommodation price, self-catering apartment booking">
+  <meta name="author" content="Ray & Elizabeth Monareng">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="rates-page">
+
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/buffalo.png" alt="Buffalo's BnB Logo">
+      <span>Buffalo's BnB</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="amenities.html">Amenities</a></li>
+      <li><a href="rates.html" class="active">Rates &amp; Policies</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="moving-banner">
+    <div class="moving-text">Book with us now!! Book with us now!! Book with us now!! Book with us now!!</div>
+  </div>
+
+  <main class="main-content">
+    <section class="page-header">
+      <h1>Rates &amp; House Policies</h1>
+      <p>Affordable luxury with transparent terms.</p>
+    </section>
+
+    <div class="container">
+      <div class="grid-2">
+        
+        <div class="home-card">
+          <h2>Standard Rates</h2>
+          <p><strong>Nightly Rate:</strong> R850 per night (Base Rate).</p>
+          <p><strong>Long Stay Discounts:</strong> Special rates available for weekly or monthly stays.</p>
+          <p><strong>Check-in:</strong> 14:00 PM</p>
+          <p><strong>Check-out:</strong> 10:00 AM</p>
+        </div>
+
+        <div class="home-card">
+          <h2>Estate Rules</h2>
+          <p>• <strong>No Smoking:</strong> Allowed on the private balcony only.</p>
+          <p>• <strong>Parties:</strong> Strict quiet hours after 22:00 PM to respect estate residents.</p>
+          <p>• <strong>Occupancy:</strong> Maximum 2 adult guests.</p>
+        </div>
+
+      </div>
+
+      <!-- Dynamic Booking & Rate Calculator Functionality -->
+     <!-- Dynamic Booking & Rate Calculator Functionality -->
+      <div class="home-card" style="margin-top: 30px; text-align: left;">
+        <h2>Calculate Your Stay Cost</h2>
+        <p>Select your dates to estimate rates and proceed with your booking:</p>
+        
+        <form id="booking-calculator-form" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+          <div>
+            <label for="check-in" style="display:block; margin-bottom:5px; font-weight:bold;">Check-in Date:</label>
+            <input type="date" id="check-in" required style="width:100%; padding: 0.6rem; border-radius:4px; border:1px solid #ccc; box-sizing: border-box;">
+          </div>
+          
+          <div>
+            <label for="check-out" style="display:block; margin-bottom:5px; font-weight:bold;">Check-out Date:</label>
+            <input type="date" id="check-out" required style="width:100%; padding: 0.6rem; border-radius:4px; border:1px solid #ccc; box-sizing: border-box;">
+          </div>
+
+          <div>
+            <label for="guests" style="display:block; margin-bottom:5px; font-weight:bold;">Guests:</label>
+            <select id="guests" style="width:100%; padding: 0.6rem; border-radius:4px; border:1px solid #ccc; box-sizing: border-box;">
+              <option value="1">1 Guest</option>
+              <option value="2">2 Guests (Max)</option>
+            </select>
+          </div>
+        </form>
+
+        <div id="calculator-result" style="margin-top: 20px; padding: 15px; background-color: #f9f9f9; border-left: 4px solid #D9822B; border-radius: 4px;">
+          <p style="margin: 0; font-size: 1.1rem; font-weight: bold; color: #333;">Total Nights: <span id="total-nights">0</span></p>
+          <p style="margin: 5px 0 15px 0; font-size: 1.2rem; font-weight: bold; color: #D9822B;">Estimated Cost: R<span id="total-cost">0</span></p>
+          <button id="proceed-booking-btn" style="background-color: #D9822B; color: white; border: none; padding: 0.8rem 1.5rem; font-size: 1rem; border-radius: 4px; cursor: pointer; font-weight: bold;">Proceed to Book</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Buffalo's BnB. Greenpark, Boksburg, Johannesburg, South Africa.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,413 @@
+/* ==========================================
+   BUFFALO'S BNB - MASTER STYLESHEET
+   ========================================== */
+
+/* 1. RESET & BASE VARIABLES */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-heading: 'Georgia', serif;
+  --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --color-dark: #1A1A1A;
+  --color-light: #F8F5F0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #333333;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. NAVIGATION BAR & SPINNING LOGO */
+.navbar {
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2B2B2B;
+}
+
+.navbar .logo img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 50%;
+  animation: spinLogo 4s linear infinite;
+}
+
+.navbar .logo img:hover {
+  animation-play-state: paused;
+}
+
+@keyframes spinLogo {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #555555;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #7A8B6E;
+}
+
+/* 3. CONTINUOUS MOVING BANNER */
+.moving-banner {
+  width: 100%;
+  background-color: #C49A45;
+  color: #FFFFFF;
+  padding: 0.6rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 10;
+}
+
+.moving-text {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  animation: moveLeftToRight 6s linear infinite;
+}
+
+@keyframes moveLeftToRight {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* 4. MAIN LAYOUT & GRID SYSTEM */
+.main-content {
+  flex: 1;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .nav-links { gap: 0.75rem; font-size: 0.75rem; }
+}
+
+/* 5. PAGE HEADERS & CARDS */
+.page-header {
+  padding: 3.5rem 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.page-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.home-card, .about-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #E8D8C3;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+  color: #3A332C;
+}
+
+.home-card h2, .home-card h3, .about-card h2 {
+  font-family: var(--font-heading);
+  color: #3A332C;
+  margin-bottom: 1rem;
+}
+
+.home-highlight {
+  background-color: #7A8B6E;
+  color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.quote-box {
+  background-color: rgba(234, 210, 172, 0.95);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 2.5rem;
+  text-align: center;
+  font-style: italic;
+  color: #3A2E2B;
+  font-weight: bold;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* 6. HISTORY CARD (HOVER-TO-EXPAND FEATURE) */
+.history-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #D4C3B3;
+  border-top: 4px solid #C49A45;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  margin-bottom: 2.5rem;
+  position: relative;
+  cursor: pointer;
+  max-height: 180px;
+  overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.history-card::after {
+  content: "Hover to read full story ↓";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.95) 70%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #C49A45;
+  letter-spacing: 0.5px;
+  transition: opacity 0.4s ease;
+}
+
+.history-card:hover {
+  max-height: 600px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  border-color: #C49A45;
+}
+
+.history-card:hover::after {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.history-card h2 {
+  color: #2A221C;
+  font-family: var(--font-heading);
+  margin-bottom: 1rem;
+}
+
+.history-card p {
+  color: #3A332C;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* 7. FOOTER */
+footer {
+  background-color: #222222;
+  color: #CCCCCC;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* 8. PER-PAGE BACKGROUND THEMES */
+body.home-page {
+  background-image: linear-gradient(rgba(248, 245, 240, 0.4), rgba(248, 245, 240, 0.4)), url('images/backround.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+body.home-page .page-header { background: rgba(232, 216, 195, 0.6) !important; backdrop-filter: blur(4px); border-bottom: 4px solid #7A8B6E !important; }
+body.home-page .moving-banner { background-color: #7A8B6E !important; color: #FFFFFF !important; }
+
+body.about-page {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('images/about.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+body.about-page .page-header { background-color: rgba(74, 59, 50, 0.5) !important; color: #FFFFFF !important; backdrop-filter: blur(4px); border-bottom: 2px solid #C49A45 !important; }
+body.about-page .moving-banner { background-color: #C49A45 !important; color: #1A1A1A !important; }
+
+body.amenities-page {
+  background-image: linear-gradient(rgba(240, 248, 250, 0.5), rgba(240, 248, 250, 0.5)), url('images/amenities-bg.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+body.amenities-page .page-header { background: rgba(43, 90, 115, 0.7) !important; color: #FFFFFF !important; backdrop-filter: blur(4px); border-bottom: 4px solid #3E829A !important; }
+body.amenities-page .moving-banner { background-color: #2B5A73 !important; color: #FFFFFF !important; }
+
+body.rates-page {
+  background-image: linear-gradient(rgba(250, 248, 245, 0.45), rgba(250, 248, 245, 0.45)), url('images/rates-bg.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+body.rates-page .page-header { background: rgba(92, 75, 61, 0.7) !important; color: #FFFFFF !important; backdrop-filter: blur(4px); border-bottom: 4px solid #8B6B52 !important; }
+body.rates-page .moving-banner { background-color: #8B6B52 !important; color: #FFFFFF !important; }
+
+body.gallery-page {
+  background-image: linear-gradient(rgba(20, 20, 20, 0.7), rgba(20, 20, 20, 0.7)), url('images/gallery-bg.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  color: #EEEEEE !important;
+}
+body.gallery-page .page-header { background-color: rgba(17, 17, 17, 0.8) !important; backdrop-filter: blur(4px); border-bottom: 2px solid #444444 !important; }
+body.gallery-page .moving-banner { background-color: #D4AF37 !important; color: #111111 !important; }
+
+body.contact-page {
+  background-image: linear-gradient(rgba(245, 245, 245, 0.5), rgba(245, 245, 245, 0.5)), url('images/location-bg.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+body.contact-page .page-header { background: rgba(60, 64, 67, 0.7) !important; color: #FFFFFF !important; backdrop-filter: blur(4px); border-bottom: 4px solid #D9822B !important; }
+body.contact-page .moving-banner { background-color: #D9822B !important; color: #FFFFFF !important; }
+
+/* GALLERY GRID & POP-OUT HOVER EFFECT */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  padding: 2rem 0;
+}
+
+.gallery-item {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  border-radius: 12px;
+  background-color: #1A1A1A;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  /* overflow: visible allows the image to pop OUT of the container */
+  overflow: visible; 
+  transition: transform 0.3s ease, z-index 0.3s ease;
+  z-index: 1;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+/* POP-OUT EFFECT ON HOVER */
+.gallery-item:hover {
+  z-index: 99; /* Brings hovered photo over neighboring elements */
+}
+
+.gallery-item:hover img {
+  transform: scale(1.12) translateY(-8px); /* Pops outward toward user */
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.6);
+}
+
+/* ALWAYS VISIBLE & ENHANCED CAPTIONS */
+.gallery-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #FFFFFF;
+  padding: 0.6rem 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  text-align: center;
+  font-weight: 600;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gallery-item:hover .gallery-caption {
+  transform: scale(1.12) translateY(-8px);
+}
+
+/* Image & Card Layout Fixes */
+.home-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.home-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body, html {
+    max-width: 100%;
+    overflow-x: hidden;
+}
